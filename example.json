@@ -1,0 +1,9 @@
+{
+  "title":"校園晨報｜教學情境，不是真實公告", "status":"mixed", "date":"2026-11-24", "freshness_window":"以下三則為同一個虛構校園的示範資料，不是即時消息。",
+  "assumptions":["內容與編輯分數專供展示；example.org 連結為示例，不能作為真實證據。"],
+  "items":[
+    {"rank":1,"headline":"圖書館週三上午暫停借還書，閱覽區仍開放","category":"圖書館","why_it_matters":"想還書的同學要改時間，但只想找位子讀書的人仍可照常到館。","commentary":"看清楚公告影響哪一項服務，比只記得『暫停』更有用。","uncertainty_summary":"這則示範公告只談借還書，不能推論整館關閉。","freshness":"教學情境中的週三上午，非真實服務異動。","evidence_quality":"primary","sources":[{"title":"示例：圖書館服務公告（虛構）","url":"https://example.org/library","published_at":"2026-11-24","source_type":"示範公告"}],"scores":{"importance":8,"user_interest_fit":8,"freshness":8,"evidence_confidence":8,"composite":8},"suggested_next_action":"read"},
+    {"rank":2,"headline":"學生報轉述：有人提議把晚間接駁車延後半小時","category":"交通","why_it_matters":"要趕末班車時，提案不能當成新的發車時刻。","commentary":"半小時描述提案幅度，不代表新班表已生效。","uncertainty_summary":"學生報轉述提案；示例沒有校方核定班表。","freshness":"教學情境中的討論，沒有生效日。","evidence_quality":"reputable_secondary","sources":[{"title":"示例：學生報訪談摘要（虛構）","url":"https://example.org/shuttle","source_type":"示範轉述"}],"scores":{"importance":7,"user_interest_fit":7,"freshness":6,"evidence_confidence":5,"composite":6},"suggested_next_action":"watch"},
+    {"rank":3,"headline":"群組說自習室將改成全天開放，目前沒有公告","category":"圖書館","why_it_matters":"若依傳聞深夜到館，可能白跑一趟。","commentary":"可以先找場館服務台確認，不要把轉傳次數當成佐證。","uncertainty_summary":"來源只有群組轉述，無日期、無正式公告。","freshness":"時間不明；保留未知。","evidence_quality":"unverified_lead","sources":[{"title":"示例：匿名轉述（虛構）","url":"https://example.org/rumor","source_type":"教學佔位"}],"scores":{"importance":5,"user_interest_fit":6,"freshness":1,"evidence_confidence":1,"composite":3},"suggested_next_action":"verify"}
+  ]
+}

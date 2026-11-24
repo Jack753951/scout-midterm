@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.scout/schemas/brief.schema.json",
+  "title": "Scout Brief",
+  "type": "object",
+  "required": ["title", "status", "date", "freshness_window", "items"],
+  "properties": {
+    "title": {"type": "string", "minLength": 1},
+    "status": {"type": "string", "enum": ["draft", "verified", "mixed", "unverified"]},
+    "date": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+    "freshness_window": {"type": "string", "minLength": 1},
+    "assumptions": {"type": "array", "items": {"type": "string"}},
+    "market_radar": {
+      "type": "object",
+      "required": ["status", "item_ranks", "note"],
+      "properties": {
+        "status": {"type": "string", "enum": ["available", "unavailable"]},
+        "item_ranks": {"type": "array", "maxItems": 3, "uniqueItems": true, "items": {"type": "integer", "minimum": 1, "maximum": 30}},
+        "note": {"type": "string", "minLength": 1, "maxLength": 300}
+      },
+      "additionalProperties": false
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 30,
+      "items": {
+        "type": "object",
+        "required": ["rank", "headline", "category", "why_it_matters", "freshness", "evidence_quality", "sources", "scores", "suggested_next_action"],
+        "properties": {
+          "rank": {"type": "integer", "minimum": 1, "maximum": 30},
+          "display_tier": {"type": "string", "enum": ["full", "compact"]},
+          "commentary": {"type": "string", "minLength": 1, "maxLength": 120},
+          "uncertainty_summary": {"type": "string", "minLength": 1, "maxLength": 60},
+          "market_scope": {"type": "string", "enum": ["none", "macro", "markets", "industry"]},
+          "market_context": {
+            "type": "object",
+            "required": ["reference_date", "reference_kind", "period_label", "source_url", "evidence_quote"],
+            "properties": {
+              "reference_date": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+              "reference_kind": {"type": "string", "enum": ["trading_day", "reporting_period", "event_date"]},
+              "period_label": {"type": "string", "minLength": 1, "maxLength": 80},
+              "source_url": {"type": "string", "minLength": 1, "maxLength": 1024},
+              "evidence_quote": {"type": "string", "minLength": 1, "maxLength": 300}
+            },
+            "additionalProperties": false
+          },
+          "headline": {"type": "string", "minLength": 1},
+          "category": {"type": "string", "minLength": 1},
+          "why_it_matters": {"type": "string", "minLength": 1},
+          "freshness": {"type": "string", "minLength": 1},
+          "evidence_quality": {"type": "string", "enum": ["primary", "reputable_secondary", "community_signal", "unverified_lead", "mixed"]},
+          "sources": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["title", "url"],
+              "properties": {
+                "title": {"type": "string", "minLength": 1},
+                "url": {"type": "string", "minLength": 1},
+                "published_at": {"type": "string"},
+                "source_type": {"type": "string"}
+              },
+              "additionalProperties": false
+            }
+          },
+          "scores": {
+            "type": "object",
+            "required": ["importance", "user_interest_fit", "freshness", "evidence_confidence", "composite"],
+            "properties": {
+              "importance": {"type": "number", "minimum": 0, "maximum": 10},
+              "user_interest_fit": {"type": "number", "minimum": 0, "maximum": 10},
+              "freshness": {"type": "number", "minimum": 0, "maximum": 10},
+              "evidence_confidence": {"type": "number", "minimum": 0, "maximum": 10},
+              "composite": {"type": "number", "minimum": 0, "maximum": 10}
+            },
+            "additionalProperties": false
+          },
+          "verification_notes": {"type": "string"},
+          "image_status": {"type": "string", "maxLength": 160},
+          "image": {
+            "type": "object",
+            "required": ["data_uri", "source_url", "original_url", "credit", "caption"],
+            "properties": {
+              "data_uri": {"type": "string", "minLength": 1, "maxLength": 266691},
+              "source_url": {"type": "string", "minLength": 1, "maxLength": 1024},
+              "original_url": {"type": "string", "minLength": 1, "maxLength": 1024},
+              "credit": {"type": "string", "minLength": 1, "maxLength": 300},
+              "caption": {"type": "string", "minLength": 1, "maxLength": 300}
+            },
+            "additionalProperties": false
+          },
+          "suggested_next_action": {"type": "string", "enum": ["read", "watch", "verify", "park", "ignore"]}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
